@@ -8,7 +8,8 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Node;
 
 /**
- * Logic of game is in this class
+ * The model of tic tac toe game maintains state of the game,
+ * evaluates moves, and updates the board view.
  * @author jim
  *
  */
