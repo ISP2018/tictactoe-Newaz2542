@@ -63,6 +63,7 @@ public class TicTacToeGame {
 	public boolean canMoveTo(Player player, int col, int row) {
 		if (row<0 || row>pieces.length) return false;
 		if (col<0 || col>pieces[row].length) return false;
+		if (isGameOver()) return false;
 		return pieces[row][col] == null || pieces[row][col] == Piece.NONE;
 	}
 	
@@ -86,7 +87,7 @@ public class TicTacToeGame {
 		if (piece.type == Player.X) nextPlayer = Player.O;
 		else nextPlayer = Player.X;
 		/** after each move check if board is full */
-		if (boardIsFull()) gameOver.set(true);
+		if (boardIsFull()|| winner() != Player.NONE) gameOver.set(true);
 		
 	}
 	
@@ -121,13 +122,13 @@ public class TicTacToeGame {
 		}
 		// Look for N matching pieces on downward diagonal.
 		Player p = pieces[0][0].type;
-		if (p != Player.NONE && p == pieces[1][1].type && p == pieces[2][2].type) {
+		if (p != Player.NONE && p == pieces[1][1].type && p == pieces[2][2].type && p == pieces[3][3].type) {
 			// all pieces on diagonal occupied by same type (Player)
 			return p;
 		}
 		// Look for N matching pieces on upward diagonal
-		p = pieces[0][2].type; // start at lower-left corner
-		if (p != Player.NONE && p == pieces[1][1].type && p == pieces[2][0].type) {
+		p = pieces[0][3].type; // start at lower-left corner
+		if (p != Player.NONE && p == pieces[1][2].type && p == pieces[2][1].type && p == pieces[3][0].type) {
 			// all pieces on diagonal occupied by same type (Player)
 			return p;
 		}
