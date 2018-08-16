@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 /**
  * A TicTacToe board.
  * This class provides a view of the board.
+ * @author jim
  */
 public class Board extends GridPane  {
 	/** Size of squares on the board. */
@@ -31,17 +32,11 @@ public class Board extends GridPane  {
 		super.setVgap(GAP);
 		
 		for (int row = 0; row < board.length; row++) {
-			int y = row * TILESIZE;
 			for (int col = 0; col < board[row].length; col++) {
-				int x = col * TILESIZE;
 				BoardSquare cell = new BoardSquare(row, col, TILESIZE);
 				cell.setFill( squareColor );
 				board[row][col] = cell;
 				super.add( cell, col, row );
-				Bounds b = cell.getBoundsInParent();
-//				System.out.printf("Cell [%d,%d] has bounds x=[%.1f,%.1f] y=[%.1f,%.1f]\n", 
-//						row, col,
-//						b.getMinX(), b.getMaxX(), b.getMinY(), b.getMaxY() );
 			}
 		}
 		// make the game board fit the cells. Don't forget hgap and vgap.

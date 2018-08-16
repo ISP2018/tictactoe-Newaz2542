@@ -7,7 +7,11 @@ import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Node;
 
-
+/**
+ * Logic of game is in this class
+ * @author jim
+ *
+ */
 public class TicTacToeGame {
 	private final int boardsize;
 	/** View of the TicTacToe board. */
@@ -18,7 +22,10 @@ public class TicTacToeGame {
 	private SimpleBooleanProperty gameOver;
 	
 	private Player nextPlayer = Player.X;
-	
+	/**
+	 * Get size to create Board and Piece of game.
+	 * @param size
+	 */
 	public TicTacToeGame(int size) {
 		this.boardsize = size;
 		board = new Board(boardsize,boardsize);   // view of the gameboard
@@ -27,14 +34,21 @@ public class TicTacToeGame {
 		startNewGame();
 	}
 	
+	/**
+	 * Return object Board 
+	 * @return board to whatever it call
+	 */
 	public Board getBoard() {
 		return board;
 	}
 	
+	/**
+	 * Remove every progress that have be done then start a new game
+	 */
 	public void startNewGame() {
 		// Avoid nulls. Assign a "none" object to each location on the board.
-		for(int row=0; row<3; row++) 
-			for(int col=0; col<3; col++) pieces[row][col] = Piece.NONE;
+		for(int row=0; row<boardsize; row++) 
+			for(int col=0; col<boardsize; col++) pieces[row][col] = Piece.NONE;
 		// Remove Pieces from the board (view), but not the squares themselves. Use a Predicate to test for Piece.
 		Predicate<Node> isPiece = (node) -> node instanceof Piece;
 		board.getChildren().removeIf(isPiece);
