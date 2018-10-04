@@ -22,8 +22,4 @@ jdk:
 # You can run many commands, one per line prefixed with "  - ".
 
 script:
-- ant init
-- ant compile
-- ant test-compile
 - ant test
-- ant run
