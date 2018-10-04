@@ -1,4 +1,10 @@
-*.class
 bin/
 build/
 out/
+# lib is automatically populated by Ant task
+lib/
+.classpath
+.project
+*.class
+runtests.sh
+TicTacToe.jar
